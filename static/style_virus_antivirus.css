@@ -1,0 +1,323 @@
+/* style_antivirus.css */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins' ,'sans-serif';
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100vh;
+    margin: 0;
+    background: #000046;
+    background: -webkit-linear-gradient(to right, #1CB5E0, #000046);
+    background: linear-gradient(to right, #1CB5E0, #000046);
+}
+h1{
+    font-size: 50px;
+}
+.menu {
+    position: absolute;
+    top: 35px;
+    left: 20px;
+}
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 100%;
+    background: transparent;
+    backdrop-filter: blur(40px);
+    border-right: 2px solid rgb(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgb(0,0,0, 0.2);
+    padding: 6px 14px;
+    transition: .5s;
+    z-index: 1000;
+}
+.sidebar.active{
+    width: 260px;
+}
+.sidebar .logo-menu{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+}
+.sidebar .logo-menu .logo{
+    font-size: 25px;
+    color: #fff;
+    pointer-events: none;
+    opacity: 0;
+    transition: .3s;
+}
+.sidebar.active .logo-menu .logo{
+    opacity: 1;
+    transition-duration: .2s;
+}
+.sidebar .logo-menu .toggle-btn{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.sidebar.active .logo-menu .toggle-btn{
+    left: 90%;
+}
+.sidebar .list {
+    margin-top: 10px;
+}
+.list .list-item{
+   list-style: none;
+   width: 100%;
+   height: 50px;
+   margin: 5px 0;
+   line-height: 50px;
+}
+.list .list-item a{
+   display: flex;
+   align-items: center;
+   font-size: 18px;
+   color: #fff;
+   text-decoration: none;
+   border-radius: 6px;
+   transition: 0.5s;
+   white-space: nowrap;
+}
+.list .list-item.active a,.list .list-item:hover{
+    background: rgb(255, 255, 255, 0.2);
+}
+.list .list-item a i{
+    min-width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+.sidebar .link-name{
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.sidebar.active .link-name{
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: calc(.1s * var(--i));
+}
+.virus-antivirus-container {
+    margin-left: 270px;
+    padding: 20px;
+}
+.viantivirus-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+}
+/* Estilos de botones de index.html */
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+:root {
+    --glow-color: hsl(0, 85%, 52%);
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+.glowing-btn {
+    position: relative;
+    color: var(--glow-color);
+    cursor: pointer;
+    padding: 0.35em 1em;
+    border: 0.15em solid var(--glow-color);
+    border-radius: 0.45em;
+    background: none;
+    perspective: 2em;
+    font-family: "Raleway", sans-serif;
+    font-size: 2em;
+    font-weight: 900;
+    letter-spacing: 1em;
+    -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+        0px 0px 0.5em 0px var(--glow-color);
+    -moz-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+        0px 0px 0.5em 0px var(--glow-color);
+    box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+        0px 0px 0.5em 0px var(--glow-color);
+    animation: border-flicker 2s linear infinite;
+}
+.glowing-word {
+    float: left;
+    margin-right: -0.8em;
+    -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+        0 0 0.45em var(--glow-color);
+    -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+        0 0 0.45em var(--glow-color);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
+    animation: text-flicker 3s linear infinite;
+}
+.faulty-letter {
+    opacity: 0.5;
+    animation: faulty-flicker 2s linear infinite;
+}
+.glowing-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: -1;
+    background-color: var(--glow-color);
+    box-shadow: 0 0 2em 0.2em var(--glow-color);
+    transition: opacity 100ms linear;
+}
+.glowing-btn:hover {
+    color: rgba(0, 0, 0, 0.8);
+    text-shadow: none;
+    animation: none;
+}
+.glowing-btn:hover .glowing-word {
+    animation: none;
+}
+.glowing-btn:hover .faulty-letter {
+    animation: none;
+    text-shadow: none;
+    opacity: 1;
+}
+.glowing-btn:hover:before {
+    filter: blur(1.5em);
+    opacity: 1;
+}
+.glowing-btn:hover:after {
+    opacity: 1;
+}
+.glowing-btn:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+           0 0 2.5em 2em var(--glow-spread-color),
+           inset 0 0 .5em .25em var(--glow-color);
+   }
+@keyframes faulty-flicker {
+    0% {
+        opacity: 0.1;
+    }
+    2% {
+        opacity: 0.1;
+    }
+    4% {
+        opacity: 0.5;
+    }
+    19% {
+        opacity: 0.5;
+    }
+    21% {
+        opacity: 0.1;
+    }
+    23% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    83% {
+        opacity: 0.4;
+    }
+
+    87% {
+        opacity: 1;
+    }
+}
+@keyframes text-flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    2% {
+        opacity: 1;
+    }
+
+    8% {
+        opacity: 0.1;
+    }
+
+    9% {
+        opacity: 1;
+    }
+
+    12% {
+        opacity: 0.1;
+    }
+    20% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.3;
+    }
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+    72% {
+        opacity: 0.2;
+    }
+
+    77% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0.9;
+    }
+}
+@keyframes border-flicker {
+    0% {
+        opacity: 0.1;
+    }
+    2% {
+        opacity: 1;
+    }
+    4% {
+        opacity: 0.1;
+    }
+
+    8% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .glowing-btn {
+        font-size: 1em;
+    }
+}
+#resultado {
+    margin-top: 20px;
+    padding: 70px;
+    background-color: rgba(40, 40, 40, 0.8); /* Color de fondo con transparencia */
+    border: 1px solid #ced4da;
+    border-radius: 10px; /* Bordes más redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center; /* Centrar el texto */
+    max-width: 1500px; /* Limitar el ancho máximo */
+    margin-left: 10px; /* Centrar horizontalmente */
+    margin-right: auto; /* Centrar horizontalmente */
+    font-size: 1.8em; /* Aumentar el tamaño de la fuente */
+    color: #ffffff; /* Color del texto */
+}

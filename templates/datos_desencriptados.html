@@ -1,0 +1,96 @@
+{% extends "base.html" %} {% block title %}Datos Desencriptados{% endblock %}
+{%block styles %}
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+/>
+<link rel="stylesheet" href="../static/style_datos_desencriptados.css" />
+{% endblock %} {% block content %}
+<div class="menu">
+  <nav class="sidebar">
+    <div class="logo-menu">
+      <h2 class="logo">Menu</h2>
+      <i class="bx bx-menu toggle-btn"></i>
+    </div>
+    <ul class="list">
+      <li class="list-item">
+        <a href="/datos">
+          <i class="bx bxs-grid-alt"></i>
+          <span class="link-name" style="--i: 1"> Capturar Datos </span>
+        </a>
+      </li>
+      <li class="list-item">
+        <a href="/datos_guardados">
+          <i class="bx bx-heart"></i>
+          <span class="link-name" style="--i: 8"> Datos guardados </span>
+        </a>
+      </li>
+      <li class="list-item active">
+        <a href="/datos_desencriptados">
+          <i class="bx bx-folder"></i>
+          <span class="link-name" style="--i: 5"> Ver datos desencript </span>
+        </a>
+      </li>
+      <li class="list-item">
+        <a href="/virus_antivirus">
+          <i class="bx bx-cog"></i>
+          <span class="link-name" style="--i: 9"> Virus y Antivirus </span>
+        </a>
+      </li>
+      <li class="list-item">
+        <a href="/">
+          <i class="bx bx-user"></i>
+          <span class="link-name" style="--i: 2"> Volver al Login </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <script>
+    const sidebar = document.querySelector(".sidebar");
+    const toggleBtn = document.querySelector(".toggle-btn");
+
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+    });
+  </script>
+</div>
+<div class="datosdesencript-container">
+  <h2>Datos Desencriptados</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ID Cuenta</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Tipo de Documento</th>
+        <th>Cédula</th>
+        <th>Teléfono</th>
+        <th>Ciudad</th>
+        <th>Dirección</th>
+        <th>Barrio</th>
+        <th>Género</th>
+        <th>Edad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for dato in datos %}
+      <tr>
+        <td>{{ dato.id }}</td>
+        <td>{{ dato.cuenta_id }}</td>
+        <td>{{ dato.nombre }}</td>
+        <td>{{ dato.apellido }}</td>
+        <td>{{ dato.tipo_documento }}</td>
+        <td>{{ dato.cedula }}</td>
+        <td>{{ dato.telefono }}</td>
+        <td>{{ dato.ciudad }}</td>
+        <td>{{ dato.direccion }}</td>
+        <td>{{ dato.barrio }}</td>
+        <td>{{ dato.genero }}</td>
+        <td>{{ dato.edad }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

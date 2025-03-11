@@ -1,0 +1,34 @@
+-- Crear una base de datos llamada datos_db con soporte para caracteres UTF-8
+CREATE DATABASE datos_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+-- Seleccionar la base de datos datos_db para usarla
+USE datos_db;
+
+-- Crear una tabla llamada datos_sensibles para almacenar datos sensibles cifrados
+CREATE TABLE datos_sensibles (
+    id INT AUTO_INCREMENT PRIMARY KEY, -- Campo de identificación única que se incrementa automáticamente
+    cuenta_id INT, -- Nueva columna para almacenar el ID de la cuenta de usuario
+    nombre BLOB NOT NULL, -- Nombre cifrado almacenado como un objeto binario grande (BLOB)
+    apellido BLOB NOT NULL, -- Apellido cifrado almacenado como un objeto binario grande (BLOB)
+    tipo_documento BLOB NOT NULL, -- Tipo de documento cifrado almacenado como un objeto binario grande (BLOB)
+    cedula BLOB NOT NULL, -- Cédula cifrada almacenada como un objeto binario grande (BLOB)
+    telefono BLOB NOT NULL, -- Teléfono cifrado almacenado como un objeto binario grande (BLOB)
+    ciudad BLOB NOT NULL, -- Ciudad cifrada almacenada como un objeto binario grande (BLOB)
+    direccion BLOB NOT NULL, -- Dirección cifrada almacenada como un objeto binario grande (BLOB)
+    barrio BLOB NOT NULL, -- Barrio cifrado almacenado como un objeto binario grande (BLOB)
+    genero BLOB NOT NULL, -- Género cifrado almacenado como un objeto binario grande (BLOB)
+    edad BLOB NOT NULL -- Edad cifrada almacenada como un objeto binario grande (BLOB)
+);
+
+CREATE TABLE ciudades (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+INSERT INTO ciudades (nombre) VALUES
+('Bogota D.C.'),
+('Medellin'),
+('Cartagena'),
+('Santa Marta'),
+('Cali'),
+('San Andres');

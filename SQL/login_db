@@ -1,0 +1,13 @@
+-- Crear una base de datos llamada login_db con soporte para caracteres UTF-8
+CREATE DATABASE login_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+-- Seleccionar la base de datos login_db para usarla
+USE login_db;
+
+-- Crear una tabla llamada users para almacenar información de usuarios
+CREATE TABLE users (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY, -- Campo de identificación única que se incrementa automáticamente
+    usuario VARCHAR(100) NOT NULL UNIQUE, -- Nombre de usuario, debe ser único y no puede ser nulo
+    correo VARCHAR(100) NOT NULL, -- Dirección de correo electrónico, no puede ser nula
+    password VARCHAR(255) NOT NULL -- Contraseña hasheada, no puede ser nula
+);

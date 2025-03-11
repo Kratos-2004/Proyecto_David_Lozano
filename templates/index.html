@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+<!-- Extiende la plantilla base.html, heredando su estructura -->
+
+{% block title %}Iniciar Sesión{% endblock %}
+<!-- Define el título de la página como "Iniciar Sesión" -->
+
+{% block styles %}
+<!-- Bloque para incluir estilos personalizados -->
+<link rel="stylesheet" href="../static/style_login.css" />
+<!-- Enlace a una hoja de estilos CSS externa para el diseño de la página de inicio de sesión -->
+{% endblock %} {% block content %}
+<!-- Bloque para el contenido principal de la página -->
+<section>
+  <!-- Sección principal del contenido -->
+  <div class="color"></div>
+  <!-- Divs con clase "color" para efectos visuales -->
+  <div class="color"></div>
+  <div class="color"></div>
+  <div class="box">
+    <!-- Contenedor principal del formulario de inicio de sesión -->
+    <div class="square" style="--i: 0"></div>
+    <!-- Divs con clase "square" para efectos visuales -->
+    <div class="square" style="--i: 1"></div>
+    <div class="square" style="--i: 2"></div>
+    <div class="square" style="--i: 3"></div>
+    <div class="square" style="--i: 4"></div>
+    <div class="container">
+      <!-- Contenedor del formulario -->
+      <div class="from">
+        <!-- Contenedor del formulario de inicio de sesión -->
+        <h2>Iniciar Sesión</h2>
+        <!-- Título del formulario -->
+        <form action="/login" method="post">
+          <!-- Formulario que envía datos a la URL "/login" usando el método POST -->
+          <div class="inputBox">
+            <!-- Contenedor para el campo de entrada de usuario -->
+            <input type="text" name="username" placeholder="Usuario" required />
+            <!-- Campo de entrada para el nombre de usuario -->
+          </div>
+          <div class="inputBox">
+            <!-- Contenedor para el campo de entrada de contraseña -->
+            <input
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+              required
+            />
+            <!-- Campo de entrada para la contraseña -->
+          </div>
+          <div class="inputBox">
+            <!-- Contenedor para el botón de envío -->
+            <input type="submit" value="Entrar" />
+            <!-- Botón para enviar el formulario -->
+          </div>
+          <p class="forget">
+            <!-- Párrafo con enlace para registrarse -->
+            ¿No tienes una cuenta? <a href="/registro">Registrarse</a>
+            <!-- Enlace para ir a la página de registro -->
+          </p>
+        </form>
+        <!-- Botón de Cerrar Sesión -->
+        <a href="{{ url_for('logout') }}" class="logout-button">
+          <!-- Enlace para cerrar sesión -->
+          <span class="circle" aria-hidden="true">
+            <!-- Elemento visual del botón -->
+            <span class="icon arrow"></span>
+            <!-- Icono del botón -->
+          </span>
+          <span class="button-text">Cerrar Sesión</span>
+          <!-- Texto del botón -->
+        </a>
+        <script>
+          function cerrarSesion() {
+            fetch("{{ url_for('logout') }}") // Llama a la función logout de Flask
+              .then(() => {
+                window.close(); // Cierra la pestaña del navegador
+              })
+              .catch((err) => console.error("Error al cerrar sesión:", err));
+          }
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+<!-- Fin del bloque de contenido -->

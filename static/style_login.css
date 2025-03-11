@@ -1,0 +1,262 @@
+/* style_login.css */
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    overflow: hidden;
+}
+.logout-button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    width: 22rem;
+    height: auto;
+    margin-top: 20px;
+}
+.logout-button .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #ff359b;
+    border-radius: 1.625rem;
+}
+.logout-button .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+}
+.logout-button .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+}
+.logout-button .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.25rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+}
+.logout-button .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 2.300rem;
+    color: #ff359b;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+}
+.logout-button:hover .circle {
+    width: 100%;
+}
+.logout-button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(1rem, 0);
+}
+.logout-button:hover .button-text {
+    color: #fff;
+}
+.message-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+.flashes {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.flashes li {
+    margin: 5px 0;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.flashes .success {
+    background-color: #d4edda;
+    color: #155724;
+}
+.flashes .danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    background-color: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+}
+section .color {
+    position: absolute;
+    filter: blur(150px);
+}
+section .color:nth-child(1) {
+    top: -350px;
+    width: 3000px; height: 3000px;
+    background-color: #ff359b;
+}
+section .color:nth-child(2) {
+    bottom: -150px; left: 100px;
+    width: 1550px; height: 1550px;
+    background-color: #00d2ff;
+}
+section .color:nth-child(3) {
+    bottom: 50px; right: 100px;
+    width: 1350px; height: 1350px;
+    background-color: #0128d6;
+}
+section .box {
+    position: relative;
+}
+section .box .square {
+    position: absolute;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    animation: animate 10s linear infinite;
+    animation-delay: calc(-1s * var(--i));
+}
+@keyframes animate {
+    0%, 100% {transform: translate(-30px);}
+    50% {transform: translate(30px);}
+}
+section .box .square:nth-child(1) {
+    top: -50px;right: -60px;
+    width: 100px; height: 100px;
+}
+section .box .square:nth-child(2) {
+    top: 150px; left: -80px;
+    width: 100px; height: 100px;
+    z-index: 2;
+}
+section .box .square:nth-child(3) {
+    bottom: 50px; right: -60px;
+    width: 80px; height: 80px;
+    z-index: 2;
+}
+section .box .square:nth-child(4) {
+    bottom: -80px; left: 100px;
+    width: 50px; height: 50px;
+}
+section .box .square:nth-child(5) {
+    top: -80px; left: 140px;
+    width: 60px; height: 60px;
+}
+section .container {
+    position: relative;
+    width: 400px;
+    min-height: 400px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+section .container form {
+    position: relative;
+    padding: 40px;
+}
+section .container .from h2 {
+    position: relative;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-left: 40px;
+}
+section .container .from h2::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 150px; height: 4px;
+    background: #fff;
+}
+section .container .from .inputBox {
+    width: 100%;
+    margin-top: 10px;
+}
+section .container .from .inputBox input {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 35px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    width: 100%; 
+    box-sizing: border-box;
+}
+section .container .from .inputBox input::placeholder {
+    color: #fff;
+}
+section .container .from .inputBox input[type="submit"] {
+    background: #fff;
+    color: #666;
+    width: 100%; /* Asegura que el botón ocupe todo el ancho disponible */
+    padding: 10px;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    margin-top: 20px; /* Añade espacio entre el botón y los campos de entrada */
+    font-weight: 600;
+    font-size: 16px;
+    transition: background 0.3s; /* Añade una transición suave para el cambio de color de fondo */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+section .container .from .inputBox input[type="submit"]:hover {
+    background: #f0f0f0; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+}
+section .container .from .forget {
+    margin-top: 5px;
+    color: #fff;
+}
+section .container form .forget a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}

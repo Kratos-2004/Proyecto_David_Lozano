@@ -1,0 +1,58 @@
+<!DOCTYPE html> <!-- Declaración del tipo de documento HTML5 -->
+<html lang="es"> <!-- Inicio del documento HTML con el idioma español -->
+  <head> <!-- Encabezado del documento -->
+    <meta charset="UTF-8" /> <!-- Especifica la codificación de caracteres UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Configura la vista para dispositivos móviles -->
+    <title>{% block title %}Aplicación{% endblock %}</title> <!-- Título de la página, con un bloque para personalizarlo -->
+    {% block styles %}{% endblock %} <!-- Bloque para incluir estilos personalizados -->
+    <!-- Inicio de la sección de estilos CSS -->
+    <style> 
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+      .flashes {
+        list-style-type: none;
+        padding: 0;
+        text-align: center;
+      }
+      .flashes li {
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .flashes .success {
+        background-color: #d4edda;
+        color: #155724;
+      }
+      .flashes .danger {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+    </style> <!-- Fin de la sección de estilos CSS -->
+  </head>
+  <body> <!-- Cuerpo del documento -->
+    <div class="message-container"> <!-- Contenedor para los mensajes flash -->
+      {% with messages = get_flashed_messages(with_categories=true) %} <!-- Obtiene los mensajes flash con sus categorías -->
+      {% if messages %} <!-- Verifica si hay mensajes flash -->
+      <ul class="flashes" id="flash-messages"> <!-- Lista de mensajes flash -->
+        {% for category, message in messages %} <!-- Itera sobre los mensajes -->
+        <li class="{{ category }}">{{ message }}</li> <!-- Muestra cada mensaje con su categoría -->
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+    </div>
+    <div class="content">{% block content %}{% endblock %}</div> <!-- Bloque para el contenido principal de la página -->
+    <script> <!-- Inicio de la sección de scripts JavaScript -->
+      // Ocultar mensajes flash después de 5 segundos
+      setTimeout(function () {
+        var flashMessages = document.getElementById("flash-messages");
+        if (flashMessages) {
+          flashMessages.style.display = "none";
+        }
+      }, 3000); // 3000 milisegundos = 3 segundos
+    </script> <!-- Fin de la sección de scripts JavaScript -->
+  </body>
+</html>

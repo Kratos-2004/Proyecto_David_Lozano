@@ -1,0 +1,100 @@
+{% extends "base.html" %} {% block title %}Antivirus{% endblock %} {% block
+styles %}
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+/>
+<link rel="stylesheet" href="../static/style_virus_antivirus.css" />
+{% endblock %} {% block content %}
+<div class="menu">
+  <nav class="sidebar">
+    <div class="logo-menu">
+      <h2 class="logo">Menu</h2>
+      <i class="bx bx-menu toggle-btn"></i>
+    </div>
+    <ul class="list">
+      <li class="list-item">
+        <a href="/datos">
+          <i class="bx bxs-grid-alt"></i>
+          <span class="link-name" style="--i: 1"> Capturar Datos </span>
+        </a>
+      </li>
+      <li class="list-item">
+        <a href="/datos_guardados">
+          <i class="bx bx-heart"></i>
+          <span class="link-name" style="--i: 8"> Datos guardados </span>
+        </a>
+      </li>
+      <li class="list-item">
+        <a href="/datos_desencriptados">
+          <i class="bx bx-folder"></i>
+          <span class="link-name" style="--i: 5"> Ver datos desencript </span>
+        </a>
+      </li>
+      <li class="list-item active">
+        <a href="/virus_antivirus">
+          <i class="bx bx-cog"></i>
+          <span class="link-name" style="--i: 9"> Virus y Antivirus </span>
+        </a>
+      </li>
+      <li class="list-item">
+        <a href="/">
+          <i class="bx bx-user"></i>
+          <span class="link-name" style="--i: 2"> Volver al Login </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <script>
+    const sidebar = document.querySelector(".sidebar");
+    const toggleBtn = document.querySelector(".toggle-btn");
+
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+    });
+  </script>
+</div>
+<div class="virus-antivirus-container">
+  <h1>Virus y Antivirus</h1>
+  <button class="glowing-btn" onclick="ejecutarVirus('gusano')">
+    <span class="glowing-word">Ejecutar Virus Gusano</span>
+  </button>
+  <button class="glowing-btn" onclick="ejecutarVirus('malware')">
+    <span class="glowing-word">Ejecutar Virus Malware</span>
+  </button>
+  <button class="glowing-btn" onclick="activarAntivirus('gusano')">
+    <span class="glowing-word">Activar Antivirus para Gusano</span>
+  </button>
+  <button class="glowing-btn" onclick="activarAntivirus('malware')">
+    <span class="glowing-word">Activar Antivirus para Malware</span>
+  </button>
+  <div id="resultado"></div>
+  <script>
+    function ejecutarVirus(tipo) {
+      fetch(`/ejecutar_virus?tipo=${tipo}`)
+        .then((response) => response.text())
+        .then((data) => {
+          const resultadoDiv = document.getElementById("resultado");
+          resultadoDiv.innerText = data;
+          // Limpiar el mensaje después de 5 segundos
+          setTimeout(() => {
+            resultadoDiv.innerText = "";
+          }, 5000);
+        });
+    }
+
+    function activarAntivirus(tipo) {
+      fetch(`/activar_antivirus?tipo=${tipo}`)
+        .then((response) => response.text())
+        .then((data) => {
+          const resultadoDiv = document.getElementById("resultado");
+          resultadoDiv.innerText = data;
+          // Limpiar el mensaje después de 5 segundos
+          setTimeout(() => {
+            resultadoDiv.innerText = "";
+          }, 5000);
+        });
+    }
+  </script>
+</div>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+<!-- Extiende la plantilla base.html, heredando su estructura -->
+
+{% block title %}Capturar Datos Sensibles{% endblock %}
+<!-- Define el título de la página como "Capturar Datos Sensibles" -->
+
+{% block styles %}
+<!-- Bloque para incluir estilos personalizados -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+/>
+<link rel="stylesheet" href="../static/style_datos.css" />
+<!-- Enlace a una hoja de estilos CSS externa para el diseño de la página de captura de datos -->
+{% endblock %} {% block content %}
+<!-- Bloque para el contenido principal de la página -->
+<div class="menu">
+  <nav class="sidebar">
+    <div class="logo-menu">
+      <h2 class="logo">Menu</h2>
+      <i class="bx bx-menu toggle-btn"></i>
+    </div>
+
+    <ul class="list">
+      <li class="list-item active">
+        <a href="/datos">
+          <i class="bx bxs-grid-alt"></i>
+          <span class="link-name" style="--i: 1"> Capturar Datos </span>
+        </a>
+      </li>
+      <li class="list-item">
+        <a href="/datos_guardados">
+          <i class="bx bx-heart"></i>
+          <span class="link-name" style="--i: 8"> Datos guardados </span>
+        </a>
+      </li>
+      <li class="list-item">
+        <a href="/datos_desencriptados">
+          <i class="bx bx-folder"></i>
+          <span class="link-name" style="--i: 5"> Ver datos desencript </span>
+        </a>
+      </li>
+      <li class="list-item">
+        <a href="/virus_antivirus">
+          <i class="bx bx-cog"></i>
+          <span class="link-name" style="--i: 9"> Virus y Antivirus </span>
+        </a>
+      </li>
+      <li class="list-item">
+        <a href="/">
+          <i class="bx bx-user"></i>
+          <span class="link-name" style="--i: 2"> Volver al Login </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <script>
+    const sidebar = document.querySelector(".sidebar");
+    const toggleBtn = document.querySelector(".toggle-btn");
+
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+    });
+  </script>
+</div>
+<div class="login-container">
+  <!-- Contenedor principal del formulario -->
+  <h2>Capturar Datos Sensibles</h2>
+  <!-- Título del formulario -->
+  <form action="/datos" method="post">
+    <div class="form-group">
+      <div class="form-row">
+        <div class="form-item">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
+        <div class="form-item">
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-item">
+          <label for="tipo_documento">Tipo de Documento:</label>
+          <select name="tipo_documento" class="form-control" id="tipo_documento" required>
+            <option value="">Seleccionar</option>
+            <option value="CC">Cédula de Ciudadanía</option>
+            <option value="CE">Cédula Extranjera</option>
+            <option value="ID">ID</option>
+            <option value="TI">Tarjeta de Identidad</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <label for="cedula">Cédula:</label>
+          <input type="number" id="cedula" name="cedula" min="1" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-item">
+          <label for="telefono">Teléfono:</label>
+          <input type="number" id="telefono" name="telefono" min="1" required />
+        </div>
+        <div class="form-item">
+          <label for="ciudad">Ciudad:</label>
+          <select name="ciudad" class="form-control" id="ciudad" required>
+            <option value="">Seleccionar</option>
+            {% for ciudad in ciudades %}
+              <option value="{{ ciudad[0] }}">{{ ciudad[0] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-item">
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" required />
+        </div>
+        <div class="form-item">
+          <label for="barrio">Barrio:</label>
+          <input type="text" id="barrio" name="barrio" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-item">
+          <label for="genero">Género:</label>
+          <div class="radio-input">
+            <input class="input blue" type="radio" name="genero" value="masculino" id="masculino" required />
+            <label for="masculino">Masculino</label>
+            <input class="input red" type="radio" name="genero" value="femenino" id="femenino" required />
+            <label for="femenino">Femenino</label>
+          </div>
+        </div>
+        <div class="form-item">
+          <label for="edad">Edad:</label>
+          <input type="number" id="edad" name="edad" min="1" max="150" required />
+        </div>
+      </div>
+    </div>
+    <button class="style1" type="submit">Guardar Datos</button>
+  </form>
+  <br />
+</div>
+{% endblock %}
+<!-- Fin del bloque de contenido -->
